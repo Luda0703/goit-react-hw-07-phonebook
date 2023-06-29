@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
- const contacts = []
+//  const contacts = {
+//   items: [],
+//   isLoading: false,
+//   error: null
+// }
+
+const contacts = []
 
  const contactsSlice = createSlice({
   name: "contacts",
