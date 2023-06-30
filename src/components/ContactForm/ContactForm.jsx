@@ -1,6 +1,6 @@
 import { Form, Label, Input, Button } from './ContactForm.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from 'Redux/contactsSlice';
+import { addContact } from 'Redux/contactsFetch';
 import { getContacts } from 'Redux/selectors';
 import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
@@ -13,18 +13,18 @@ export function ContactForm() {
     e.preventDefault();
     const form = e.target;
     const name = form.elements.name.value;
-    const number = form.elements.number.value;
-    addContactFind({ id: nanoid(), name, number });
+    const phone = form.elements.phone.value;
+    addContactFind({ id: nanoid(), name, phone });
     form.reset();
   };
 
   const addContactFind = data => {
     if (
       contacts.find(item => item.name.toLowerCase() === data.name.toLowerCase() || 
-      item.number === data.number)
+      item.phone === data.phone)
     ) {
       return Notiflix.Notify.info(
-        `${data.name} or ${data.number} is already in contacts`
+        `${data.name} or ${data.phone} is already in contacts`
       );
     }
 
@@ -50,7 +50,7 @@ export function ContactForm() {
         Phone number
         <Input
           type="tel"
-          value={contacts.number}
+          value={contacts.phone}
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
