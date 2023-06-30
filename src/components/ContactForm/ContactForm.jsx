@@ -12,7 +12,7 @@ export function ContactForm() {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
-    const name = form.elements.name.value;
+    const name = form.elements.name.value
     const phone = form.elements.phone.value;
     addContactFind({ id: nanoid(), name, phone });
     form.reset();

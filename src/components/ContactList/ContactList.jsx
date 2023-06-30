@@ -17,7 +17,7 @@ export const ContactList = () => {
     return (
         
         <Ul>
-        {isLoading && "Loader..."}
+        {isLoading && <div>Loading...</div>}
         {error && <div>{error}</div>}
         {contacts.map(({name, phone, id}) => (
             <Li key={id}>
