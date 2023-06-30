@@ -14,17 +14,21 @@ export const ContactList = () => {
         dispatch(fetchContacts())
     }, [dispatch]);
 
+    deliteContactDispatch = (id) => {
+        dispatch(deleteContact(id))
+    }
+
     return (
         
         <Ul>
         {isLoading && <div>Loading...</div>}
         {error && <div>{error}</div>}
-        {contacts.map(({name, phone, id}) => (
+        {contacts.map(({name, number, id}) => (
             <Li key={id}>
-               <P>{name}: {phone}</P>
+               <P>{name}: {number}</P>
                <Button 
                type="button"
-               onClick={() => dispatch(deleteContact(id))}
+               onClick={() => deliteContactDispatch(id)}
                >Delete
                </Button>
             </Li>
