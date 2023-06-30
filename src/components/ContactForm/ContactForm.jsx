@@ -31,6 +31,7 @@ export function ContactForm() {
     dispatch(addContact(data));
   };
 
+
   return (
     <Form onSubmit={handleSubmit}>
       <Label>

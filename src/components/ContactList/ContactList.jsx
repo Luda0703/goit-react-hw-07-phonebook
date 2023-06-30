@@ -14,9 +14,6 @@ export const ContactList = () => {
         dispatch(fetchContacts())
     }, [dispatch]);
 
-    deliteContactDispatch = (id) => {
-        dispatch(deleteContact(id))
-    }
 
     return (
         
@@ -28,7 +25,7 @@ export const ContactList = () => {
                <P>{name}: {number}</P>
                <Button 
                type="button"
-               onClick={() => deliteContactDispatch(id)}
+               onClick={() => (dispatch(deleteContact(id)))}
                >Delete
                </Button>
             </Li>

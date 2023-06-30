@@ -14,3 +14,10 @@ export const getVisibleContacts = createSelector(
       );
     }
   );
+
+// export const getVisibleContacts = ({ items, filter}) => {
+//   if(!filter) {
+//       return items
+//   }
+//   return items.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()))
+// }
