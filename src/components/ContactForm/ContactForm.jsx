@@ -2,38 +2,33 @@ import { Form, Label, Input, Button } from './ContactForm.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from 'Redux/contactsFetch';
 import { getContacts } from 'Redux/selectors';
-// import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
-
 
 export function ContactForm() {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
-  // console.log(contacts)
 
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
-    const name = form.elements.name.value
+    const name = form.elements.name.value;
     const phone = form.elements.number.value;
-    addContactFind({  name, phone });
+    addContactFind({ name, phone });
     form.reset();
   };
-  
 
-  const addContactFind = ({  name, phone }) => {
+  const addContactFind = ({ name, phone }) => {
     if (
-      contacts.find(item => item.name.toLowerCase() === name.toLowerCase() || 
-      item.phone === phone)
+      contacts.find(
+        item =>
+          item.name.toLowerCase() === name.toLowerCase() || item.phone === phone
+      )
     ) {
-      return Notiflix.Notify.info(
-        `${name} or ${phone} is already in contacts`
-      );
+      return Notiflix.Notify.info(`${name} or ${phone} is already in contacts`);
     }
 
-    dispatch(addContact({  name, phone }));
+    dispatch(addContact({ name, phone }));
   };
-
 
   return (
     <Form onSubmit={handleSubmit}>
