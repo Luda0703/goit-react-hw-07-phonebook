@@ -18,9 +18,9 @@ export const ContactList = () => {
     return (
         
         <Ul>
-        {contacts.map(({name, number, id}) => (
+        {contacts.map(({name, phone, id}) => (
             <Li key={id}>
-               <P>{name}: {number}</P>
+               <P>{name}: {phone}</P>
                <Button 
                type="button"
                onClick={() => (dispatch(deleteContact(id)))}

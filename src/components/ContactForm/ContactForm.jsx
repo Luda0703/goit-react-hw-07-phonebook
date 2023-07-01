@@ -5,31 +5,33 @@ import { getContacts } from 'Redux/selectors';
 // import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
 
+
 export function ContactForm() {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
+  // console.log(contacts)
 
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
     const name = form.elements.name.value
-    const number = form.elements.number.value;
-    addContactFind({  name, number });
+    const phone = form.elements.number.value;
+    addContactFind({  name, phone });
     form.reset();
   };
-  // id: nanoid(),
+  
 
-  const addContactFind = data => {
+  const addContactFind = ({  name, phone }) => {
     if (
-      contacts.find(item => item.name.toLowerCase() === data.name.toLowerCase() || 
-      item.number === data.number)
+      contacts.find(item => item.name.toLowerCase() === name.toLowerCase() || 
+      item.phone === phone)
     ) {
       return Notiflix.Notify.info(
-        `${data.name} or ${data.number} is already in contacts`
+        `${name} or ${phone} is already in contacts`
       );
     }
 
-    dispatch(addContact(data));
+    dispatch(addContact({  name, phone }));
   };
 
 
