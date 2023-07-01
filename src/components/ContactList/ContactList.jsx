@@ -18,8 +18,6 @@ export const ContactList = () => {
     return (
         
         <Ul>
-        {isLoading && <div>Loading...</div>}
-        {error && <div>{error}</div>}
         {contacts.map(({name, number, id}) => (
             <Li key={id}>
                <P>{name}: {number}</P>
@@ -30,6 +28,8 @@ export const ContactList = () => {
                </Button>
             </Li>
         ))}
+        {isLoading && <div>Loading...</div>}
+        {error && <div>{error}</div>}
         </Ul>
     );
 }

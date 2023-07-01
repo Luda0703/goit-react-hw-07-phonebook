@@ -14,9 +14,10 @@ export function ContactForm() {
     const form = e.target;
     const name = form.elements.name.value
     const number = form.elements.number.value;
-    addContactFind({ name, number });
+    addContactFind({  name, number });
     form.reset();
   };
+  // id: nanoid(),
 
   const addContactFind = data => {
     if (
