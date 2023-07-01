@@ -1,19 +1,12 @@
 import { Ul, Li, Button, P } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact, fetchContacts } from 'Redux/contactsFetch';
-import { getError, getIsLoading, getVisibleContacts } from 'Redux/selectors';
-import { useEffect } from 'react';
+import { deleteContact } from 'Redux/contactsFetch';
+import { getVisibleContacts } from 'Redux/selectors';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getVisibleContacts);
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
+ 
   return (
     <Ul>
       {contacts.map(({ name, phone, id }) => (
@@ -26,8 +19,6 @@ export const ContactList = () => {
           </Button>
         </Li>
       ))}
-      {isLoading && <div>Loading...</div>}
-      {error && <div>{error}</div>}
     </Ul>
   );
 };
